@@ -15,7 +15,7 @@ body {
     height: 100vh;
 }
 
-.header .footer{
+.header .footer {
     background-color: rgb(0, 0, 0);
     position: fixed;
     top: 0;
@@ -23,6 +23,7 @@ body {
     display: flex;
     justify-content: space-evenly;
 }
+
 .sidebar {
     background-color: #121212;
     width: 400px;
@@ -48,13 +49,13 @@ body {
     bottom: 60px;
     border-radius: 1rem;
 }
-.sections{
+
+.sections {
     background-color: #1d1c1c;
     flex: 1;
     overflow: auto;
     right: 5px;
     border-radius: 1rem;
-    text-align: left;
     cursor: pointer;
     width: 70%;
     border-radius: 30px;
@@ -62,17 +63,90 @@ body {
     transition: 0.3s ease;
     height: 50%;
 }
-.sections div{
-    position: relative;
-    justify-content: space-between;
-    padding-left: 50px;
-    padding-top: 5px;
-}
-.sections div span{
-    position: relative;
+
+.sections div {
+    position: absolute;
     padding-left: 50px;
     padding-top: 5px;
 }
 
+.sections div span {
+    padding-left: 50px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.home {
+    position: absolute;
+    align-items: center;
+    top: 15%;
+    background-color: #1d1c1c;
+    width: 70%;
+    height: auto;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    left: 15%;
+}
+
+/* #prject {
+    position: absolute;
+    align-items: center;
+    background-color: #1d1c1c;
+    width: 70%;
+    height: auto;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    left: 15%;
+} */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
 
 
+label {
+    margin-top: 5px;
+    margin-bottom: 1px;
+    font-weight: bold;
+    color: #f9f5f5;
+    overflow: auto;
+}
+
+input[type="text"],
+textarea,
+input[type="file"],
+input[type="number"] {
+    overflow: auto;
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#dateRange {
+    display: flex;
+    gap: 50px;
+}
+
+.sections.active {
+    background-color: #1db954;
+    color: white;
+    border-radius: 5px;
+}
