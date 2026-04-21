@@ -2,23 +2,35 @@ package com.bishnu.portfolio.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Home {
-    @Id
-    int id;
-    String Name;
-    String Tagline;
-    String ShortBio;
-    String Imagepath;
 
-    public Home(int id, String name, String tagline, String shortBio, String imagepath) {
-        this.id = id;
-        this.Name = name;
-        this.Tagline = tagline;
-        this.ShortBio = shortBio;
-        this.Imagepath = imagepath;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String name;
+    private String tagline;
+    private String shortBio;
+    private String imagePath;
+
+    // 🔹 Default Constructor (JPA ke liye mandatory)
+    public Home() {
     }
+
+    // 🔹 Parameterized Constructor
+    public Home(int id, String name, String tagline, String shortBio, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.tagline = tagline;
+        this.shortBio = shortBio;
+        this.imagePath = imagePath;
+    }
+
+    // 🔹 Getters & Setters
 
     public int getId() {
         return id;
@@ -29,34 +41,34 @@ public class Home {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getTagline() {
-        return Tagline;
+        return tagline;
     }
 
     public void setTagline(String tagline) {
-        Tagline = tagline;
+        this.tagline = tagline;
     }
 
     public String getShortBio() {
-        return ShortBio;
+        return shortBio;
     }
 
     public void setShortBio(String shortBio) {
-        ShortBio = shortBio;
+        this.shortBio = shortBio;
     }
 
-    public String getImagepath() {
-        return Imagepath;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setImagepath(String imagepath) {
-        Imagepath = imagepath;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
