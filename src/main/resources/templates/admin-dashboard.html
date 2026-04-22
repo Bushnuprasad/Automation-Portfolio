@@ -97,42 +97,29 @@
                     <span class="sectionsName">Contact</span>
                 </div>
             </div>
-            <div class="sections">
-                <div>
-                    <i class="fas fa-address-card"></i>
-                </div>
-                <div>
-                    <span class="sectionsName">Social Media</span>
-                </div>
-            </div>
         </div>
         <div class="content">
             <div class="home" id="home">
                 <form action="/admin/saveHome" method="post" enctype="multipart/form-data">
-
                     <label>Name:</label>
                     <input type="text" name="name" required><br>
-
                     <label>Tagline:</label>
                     <input type="text" name="tagline" required><br>
-
                     <label>Short Bio:</label>
                     <textarea name="shortBio" rows="4"></textarea><br>
-
                     <label>Profile Image:</label>
                     <input type="file" name="imageFile"><br>
-
                     <button type="submit">Save</button>
                 </form>
             </div>
-            <div class="home" id="aboutMe">
-                <form id="aboutMeForm">
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" name="name" required><br>
-                    <label for="tagline">Tagline:</label>
-                    <input type="text" id="tagline" name="tagline" required><br>
-                    <label for="shortBio">Short Bio:</label>
-                    <textarea id="shortBio" name="shortBio" rows="5" required></textarea><br>
+            <div class="home">
+                <form action="/admin/saveAbout" method="post">
+                    <label>Full Name:</label>
+                    <input type="text" name="name" required><br>
+                    <label>Tagline:</label>
+                    <input type="text" name="tagline" required><br>
+                    <label>Short Bio:</label>
+                    <textarea name="shortBio" rows="5" required></textarea><br>
                     <button type="submit">Save</button>
                 </form>
             </div>
@@ -148,51 +135,38 @@
                 </form>
             </div>
             <div class="home" id="skills">
-                <form>
+                <form action="/admin/saveSkill" method="post">
                     <label>Skill Name:</label>
                     <input type="text" name="name" required><br>
                     <label>Proficiency (%):</label>
-                    <input type="number" name="level" required><br>
-                    <label>Skill Image:</label>
-                    <input type="file" name="imageFile"><br>
+                    <input type="number" name="level" min="0" max="100" required><br>
                     <button type="submit">Save</button>
                 </form>
             </div>
-            <div class="home" id="skills">
-                <form>
-                    <label>Skill Name:</label>
-                    <input type="text" name="name" required><br>
-                    <label>Proficiency (%):</label>
-                    <input type="number" name="level" required><br>
-                    <label>Skill Image:</label>
-                    <input type="file" name="imageFile"><br>
-                    <button type="submit">Save</button>
-                </form>
-            </div>
-            <div id="prject" class="home" style="top: 0%;">
-                <form>
+            <div id="project" class="home">
+                <form action="/admin/saveProject" method="post" enctype="multipart/form-data">
                     <label>Company Name:</label>
-                    <input type="text" name="projectCompanyName" required><br>
+                    <input type="text" name="companyName" required><br>
                     <label>Project Title:</label>
-                    <input type="text" name="projectTitle" required><br>
+                    <input type="text" name="title" required><br>
                     <label>Your Role:</label>
-                    <input type="text" name="role" required></input><br>
-                    <label>Duraction:</label>
-                    <div id="dateRange">
-                        <input type="date" name="startDate" required></input>
-                        <input type="date" name="endDate" required></input>
+                    <input type="text" name="role" required><br>
+                    <label>Duration:</label>
+                    <div>
+                        <input type="date" name="startDate" required>
+                        <input type="date" name="endDate" required>
                     </div>
                     <label>Description:</label>
                     <textarea name="description" rows="4" required></textarea><br>
                     <label>Technology Used:</label>
-                    <input type="text" name="Technology" required><br>
-                    <label>Profile Image:</label>
-                    <input type="file" name="compnyImage"><br>
+                    <input type="text" name="technology" required><br>
+                    <label>Project Image:</label>
+                    <input type="file" name="image"><br>
                     <button type="submit">Save</button>
                 </form>
             </div>
             <div class="home" id="experience">
-                <form>
+                <form action="/admin/saveExperience" method="post" enctype="multipart/form-data">
                     <label>Company Name:</label>
                     <input type="text" name="companyName" required><br>
                     <label>Job Title:</label>
@@ -205,15 +179,13 @@
                 </form>
             </div>
             <div class="home" id="education">
-                <form>
+                <form action="/admin/saveEducation" method="post" enctype="multipart/form-data">
                     <label>Name:</label>
                     <input type="text" name="name" required><br>
                     <label>Tagline:</label>
                     <input type="text" name="tagline" required><br>
                     <label>Short Bio:</label>
                     <textarea name="shortBio" rows="4"></textarea><br>
-                    <label>Profile Image:</label>
-                    <input type="file" name="imageFile"><br>
                     <button type="submit">Save</button>
                 </form>
             </div>

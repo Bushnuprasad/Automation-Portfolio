@@ -38,22 +38,107 @@
                     <h3 th:text="${company.companyName}"></h3>
                     <p th:text="${company.shortBio}"></p>
                 </div>
+                <div class="social-icons">
+                    <a>
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a>
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a>
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a>
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <!-- Main below -->
         <div class="main">
-            <!-- Sidebar first -->
             <div class="sidebar">
-                <a href="#">Certifications</a>
-                <a href="#">Enrolled Courses</a>
-                <a href="#">Enrolled Paths</a>
-                <a href="#">Use Case Library</a>
-                <a href="#">My Quiz Attempts</a>
-                <a href="#">Logout</a>
+                <a href="#" onclick="showSection('about')">About Me</a>
+                <a href="#" onclick="showSection('skills')">Skills</a>
+                <a href="#" onclick="showSection('projects')">Project</a>
+                <a href="#" onclick="showSection('experience')">Experience</a>
+                <a href="#" onclick="showSection('education')">Education</a>
+                <a href="#" onclick="showSection('resume')">Resume</a>
+                <a href="#" onclick="showSection('contact')">Contact</a>
             </div>
 
             <div class="sidebar2">
-                <div class="tabs">
+                <div class="content-scroll">
+                    <div class="user-profile section" id="about">
+                        <h3 th:text="${about.name}">Name</h3>
+                        <p th:text="${about.tagline}">Tagline</p>
+                        <p th:text="${about.shortBio}">Short Bio</p>
+                    </div>
+                    <div id="skills" class="section" style="display:none;">
+                        <div th:each="skill : ${skills}" class="skill">
+                            <span th:text="${skill.name}"></span>
+                            <div class="progress">
+                                <div class="progress-bar" th:style="'width:' + ${skill.level} + '%'"
+                                    th:text="${skill.level + '%'}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="projects" class="section" style="display:none;">
+                        <h2>Projects</h2>
+                        <div th:if="${projects == null or #lists.isEmpty(projects)}">
+                            <p>No projects available</p>
+                        </div>
+                        <div th:each="p : ${projects}" class="card">
+                            <!-- Image -->
+                            <img th:if="${p.imagePath != null}" th:src="${p.imagePath}" width="120"
+                                style="border-radius:10px">
+                            <!-- Details -->
+                            <h3 th:text="${p.title}"></h3>
+                            <p><b>Company:</b>
+                                <span th:text="${p.companyName}"></span>
+                            </p>
+                            <p><b>Role:</b>
+                                <span th:text="${p.role}"></span>
+                            </p>
+                            <p><b>Tech:</b>
+                                <span th:text="${p.technology}"></span>
+                            </p>
+                            <p><b>Duration:</b>
+                                <span th:text="${#temporals.format(p.startDate,'MMM yyyy')}"></span>
+                                -
+                                <span th:text="${#temporals.format(p.endDate,'MMM yyyy')}"></span>
+                            </p>
+                            <p th:text="${p.description}"></p>
+                        </div>
+                    </div>
+                    <div id="experience" class="section" style="display:none;">
+                        <h2>Experience</h2>
+                        <div th:each="exp : ${experiences}" class="card">
+                            <img th:src="${exp.imagePath}" width="80"><br>
+                            <h3 th:text="${exp.companyName}"></h3>
+                            <p><b>Role:</b> <span th:text="${exp.jobTitle}"></span></p>
+                            <p th:text="${exp.shortBio}"></p>
+                        </div>
+                    </div>
+                    <div id="education" class="section" style="display:none;">
+                        <h2>Education</h2>
+                        <div th:each="edu:${educations}" class="edu-card">
+                            <h4 th:text="${edu.name}"></h4>
+                            <p><span th:text="${edu.tagline}"></span></p>
+                            <p th:text="${edu.shortBio}"></p>
+                        </div>
+                    </div>
+                    <div id="resume" class="section" style="display:none;">
+                        <h2>Resume</h2>
+                        <p>You can download my resume below:</p>
+                        <a href="#" download class="btn">Download Resume</a>
+                    </div>
+                    <div id="contact" class="section" style="display:none;">
+                        <h2>Contact</h2>
+                        <p>Email: bishnu@example.com</p>
+                        <p>Phone: +91 9876543210</p>
+                        <p>Location: Bhubaneswar, India</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,6 +150,22 @@
             document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')"]').classList.add('active');
             document.getElementById(tabId).style.display = 'block';
         }
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.style.display = 'none';
+            });
+
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".progress-bar").forEach(bar => {
+                let width = bar.style.width;
+                bar.style.width = "0";
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
     </script>
 </body>
 
