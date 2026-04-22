@@ -26,16 +26,17 @@
         <div class="home">
             <div class="profile">
                 <div class="profile-picture">
-                    <img th:src="@{'/' + ${home.imagePath}}" alt="Profile Picture">
+                    <img th:src="${home.imagePath}" alt="Profile Picture">
                 </div>
                 <div class="user-profile">
                     <h3 th:text="${home.name}">Name</h3>
                     <p th:text="${home.tagline}">Tagline</p>
                     <p th:text="${home.shortBio}">Short Bio</p>
                 </div>
-                <div class="company-profile">
-                    <h3>Apmosys Technologies Pvt Ltd</h3>
-                    <p>Dec-02-2024 to Present</p>
+                <div class="company-profile" th:if="${company != null}">
+                    <img th:src="${company.imagePath}" width="80" style="border-radius:50%">
+                    <h3 th:text="${company.companyName}"></h3>
+                    <p th:text="${company.shortBio}"></p>
                 </div>
             </div>
         </div>
